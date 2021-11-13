@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://ananya:ananya@cluster0.coysa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://ananya:ananya@cluster0.coysa.mongodb.net/food?retryWrites=true&w=majority', {
     useNewUrlParser: 'true',
 });
 
