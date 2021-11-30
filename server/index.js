@@ -1,17 +1,23 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const FoodModel = require('./models/Food');
+const cors = require('cors');
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 mongoose.connect('mongodb+srv://ananya:ananya@cluster0.coysa.mongodb.net/food?retryWrites=true&w=majority', {
     useNewUrlParser: 'true',
 });
 
-app.get('/', async (req, res) => {
-    const food = new FoodModel({ foodName: 'Apple', daysSinceIAte: 5 });
+app.post('/insert', async (req, res) => {
+
+    const foodName = req.body.foodName;
+    const days = req.body.days;
+
+    const food = new FoodModel({ foodName: foodName, daysSinceIAte: days });
 
     try {
         await food.save();
@@ -20,6 +26,15 @@ app.get('/', async (req, res) => {
     catch (err) {
         console.log(err);
     }
+});
+
+app.get('/read', async (req, res) => {
+    FoodModel.find({}, (err, result) => {
+        if (err) {
+            res.send(err)
+        }
+        res.send(result);
+    })
 });
 
 app.listen('3001', () => {
