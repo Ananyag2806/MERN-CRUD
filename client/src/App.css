@@ -18,4 +18,9 @@ label {
 button {
   margin: 20px;
   width: 200px;
+  height: 30px;
+}
+
+.listItem {
+  display: flex;
 }
