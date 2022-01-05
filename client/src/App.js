@@ -4,10 +4,10 @@ import Axios from 'axios';
 
 function App() {
 
-    const [foodName, setFoodName] = useState("");
-    const [days, setDays] = useState(0);
-    const [foodList, setFoodList] = useState([]);
-    const [newFoodName, setNewFoodName] = useState('');
+    const [foodName, setFoodName] = useState("");//to add
+    const [days, setDays] = useState(0);//to add
+    const [foodList, setFoodList] = useState([]);// to read
+    const [newFoodName, setNewFoodName] = useState('');//to update
 
     useEffect(() => {
         Axios.get("http://localhost:3001/read").then(response => {
